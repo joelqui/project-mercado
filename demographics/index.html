@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="../css/bootstrap.min.css">
+  <link rel="stylesheet" href="../css/styles.css">
+  <title>JHRIS-Demographics
+  </title>
+</head>
+<body>
+      <nav class="navbar navbar-inverse">
+            <div class="navbar-header">
+             <a href="#" class="navbar-brand" >J.HRIS</a>
+            </div>
+              <ul class="nav navbar-nav">
+      <li><a href="../" >Home</a></li>
+      <li>
+          <a href="#" class="dropdown-toggle"
+          data-toggle="dropdown" role="button">Stations
+          <span class="caret"></span>
+          </a>
+          <ul class="dropdown-menu">
+              <li><a href="../serstat">Service Stations</a></li>
+              <li><a href="../planstat">Plantilla Stations</a></li>
+          </ul>
+        </li>     
+         <li>
+          <a href="#" class="dropdown-toggle"
+          data-toggle="dropdown" role="button">Reports
+          <span class="caret"></span>
+          </a>
+          <ul class="dropdown-menu">
+              <li><a href="../stepinc">Step Increments</a></li>
+              <li><a href="../loyalty">Loyalty Pay</a></li>
+              <li><a href="../retire">Retirables</a></li>
+              <li><a href="../demographics">Demographics</a></li>
+          </ul>
+        </li>        
+    </nav>
+   
+   
+<div class="container-fluid">
+
+     <div class="row">
+       
+        <div class="col-sm-offset-1 col-sm-10">
+            <div class="panel panel-default">
+                <div class="panel-heading text-center">LIST OF PERSONNEL ELIGIBLE FOR RETIREMENT</div>
+                <div class="panel-body">
+                
+                <div class="row">
+                <div class="col-sm-offset-1 col-sm-4 form-group">
+                    <label for="demoType">Select Type of Report</label>
+                    <select class="form-control" id="demoType">
+                        <option value="1">No. of male and female in the Division</option>
+                        <option value="2">No. of male and female per district</option>
+                        <option value="3">No. of male and female per school</option>
+                        <option value="4">No. of personnel in the division by position</option>
+                        <option value="5">No. of personnel per district by position</option>
+                        <option value="6">No. of personnel per school by position</option>
+                    </select>
+                </div>
+
+                <div class="col-sm-2 form-group">
+                    <label for="districtSelect">Select district</label>
+                    <select class="form-control" id="districtSelect">
+                        <option value="0">Select district</option>
+                    </select>
+                </div>
+
+                 <div class="col-sm-3 form-group">
+                    <label for="districtSelect">Select school</label>
+                    <select class="form-control" id="districtSelect">
+                        <option value="0">Select school</option>
+                    </select>
+                </div>
+
+                  <div class="col-sm-2 form-group">
+                      <br>
+                     <button id="assignEmp" class="btn btn-default">GO!</button>
+                     </div>
+
+                </div>
+
+                 <table align="center" class="table-condensed table-bordered table-striped text-center ">
+            <thead>
+            <tr>
+                <th>#</th>
+                <th>Full Name</th>
+                <th>Position</th>
+                <th>School</th>
+                <th>Data of <br>Birth</th>
+                <th>Data of <br>Original Appointment</th>
+                <th>Years in<br>Service</th>
+            </tr>
+
+            </thead>
+            <tbody>
+            <tr>
+                <td>1.</td>
+                <td>LIEZEL L. ACIBES</td>
+                <td>TEACH1</td>
+                <td>Magatas ES</td>
+                <td>July 21, 2015</td>
+                <td>July 21, 2015</td>
+                <td>28</td>
+                </tr>
+            </tbody>
+        
+            </table>
+                </div>
+            </div>
+        </div>
+    </div>   
+</div>
+
+
+
+
+  
+<script src="../js/jquery.js"></script>
+<script src="../js/bootstrap.min.js"></script>
+<script src="../js/script.js"></script>
+</body>
+</html>  

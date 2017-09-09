@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="css/bootstrap.min.css">
+  <link rel="stylesheet" href="css/styles.css">
+  <link rel="stylesheet" href="css/select2.min.css">
+<script src="js/jquery.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<script src="js/script.js"></script>
+<script src="js/select2.min.js"></script>    
+
+  <title>JHRIS-SearchSample</title>
+</head>
+<body>
+
+    <select class="form-control" name="states" id="states">
+
+    </select>
+
+
+    <script>
+    console.log('Starting');
+        $(document).ready(function () {
+          $('#states').select2({
+             placeholder: 'Enter name of employee', 
+              ajax: {
+                     url: "joel.php",
+                    dataType: 'json',
+                    delay: 250,
+                    data: function (params) {
+                    return {
+                        eq: params.term // search term
+                    
+                        };
+                    },
+                   processResults: function (data) {
+                    //    parse the results into the format expected by Select2
+                    //    since we are using custom formatting functions we do not need to
+                    //   alter the remote JSON data, except to indicate that infinite
+                        // scrolling can be used
+                       // params.page = params.page || 1;
+
+                        return {
+                            results: data
+                            };
+                        },
+                    cache: true
+                },
+               // templateSelection: template,
+               // escapeMarkup: function (markup) { return markup; }, // let our custom formatter work
+                minimumInputLength: 3
+               // templateResult: formatRepo, // omitted for brevity, see the source of this page
+               
+         });
+
+        $('#states').on('select2:select', function (evt) {
+            alert($('#states').val());
+            console.log("I miss you");
+            });
+
+         
+        });
+
+
+       
+    </script>
+
+
+
+
+
+</body>
+</html>  
