@@ -2,6 +2,8 @@
 header("Content-Type: text/javascript; charset=utf-8");
 require_once 'connect.php';
 
+//This is to test if git really works!!!!
+
 $esearch = $_GET['eq'];
 $esearchresult = array();
 
