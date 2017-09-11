@@ -15,15 +15,13 @@ if(empty($_SESSION['user_id']))
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="../css/bootstrap.min.css">
-  <link rel="stylesheet" href="../css/styles.css">
   <link rel="stylesheet" href="../css/select2.min.css">
   <link rel="stylesheet" href="../css/bootstrap-datepicker3.css">
 
     <script type="text/javascript" src="../js/jquery.js"></script>
     <script type="text/javascript" src="../js/bootstrap.min.js"></script>
-    <script type="text/javascript" src="../js/script.js"></script>
     <script type="text/javascript" src="../js/select2.min.js"></script>    
-    <script type="text/javascript" src="home.js"></script>
+    <script type="text/javascript" src="manage.js"></script>
     <script type="text/javascript" src="../js/bootstrap-datepicker.min.js"></script>
   <title>MERCADO-Home</title>
 </head>
@@ -151,12 +149,8 @@ if(empty($_SESSION['user_id']))
                 <div class="form-group">
                     <label for="suffix">User Type:</label>
                     <select class="form-control" id="suffix">
-                        <option value=""></option>
-                        <option value="1">sds</option>
-                        <option value="2">sds_staff</option>
-                        <option value="3">asds</option>
-                        <option value="4">asds_staff</option>
-                        <option value="5">sds_ict</option>
+                       <option value=""></option><option value="1">Administrator</option><option value="2">Accountant</option><option value="3">Accountant staff</option><option value="4">AOV</option><option value="5">AOV Staff</option><option value="6">ASDS</option><option value="7">ASDS Staff</option><option value="8">Budget office staff</option><option value="9">Budget Officer</option><option value="10">Cashier</option><option value="11">Cashier staff</option><option value="12">CID Chief</option><option value="13">CID chief staff</option><option value="14">CID EPS</option><option value="15">Engineer</option><option value="16">HR office staff</option><option value="17">HR Officer</option><option value="18">IT Officer</option><option value="19">Librarian</option><option value="20">Planning Officer</option><option value="21">Records office staff</option><option value="22">Records Officer</option><option value="23">SDS</option><option value="24">SDS office staff</option><option value="25">SGOD Chief</option><option value="26">SGOD Chief staff</option><option value="27">SREPS-Human Resource</option><option value="28">SREPS-Research</option><option value="29">SREPS-Social Mobilization</option><option value="30">Supply office staff</option><option value="31">Supply Officer</option> 
+
                     </select>
                 </div>
 
