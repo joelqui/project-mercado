@@ -84,7 +84,7 @@ if(empty($_SESSION['user_id']))
      <div class="row">
         <div class="col-sm-offset-1 col-sm-1">
            <button type="button" class="btn btn-default pull-right" data-toggle="modal" 
-                   data-target="#addUser"><span class="glyphicon glyphicon-plus"></span></button>  
+                   data-target="#addUserMenu"><span class="glyphicon glyphicon-plus"></span></button>  
            <br><br>
         </div>
 
@@ -97,21 +97,19 @@ if(empty($_SESSION['user_id']))
 
                 
 
-                <div class="row col-sm-12">
+                <div id="usersContainer" class="row col-sm-12">
 
-                 <table class="table-bordered table-striped table-condensed col-xs-12"><thead><tr><th style="width:5%" class="text-center">USER_ID</th><th style="width:15%" class="text-center">DEPT_CODE</th><th style="width:40%" class="text-center">NAME</th><th style="width:20%"class="text-center">USERNAME</th><th style="width:15%"class="text-center">USERTYPE<br></th><th style="width:5%"class="text-center">CHANGE<br>PASSWORD</th></tr></thead><tbody><tr><td  class="text-center">11</td><td>ADMIN</td><td>QUEENNIE TIA</td><td>queennie</td><td>admin</td><td class="text-center"><button type="button" class="btn btn-default btn-sm" data-toggle="modal" data-target="#changePassword" value="11"><span class="glyphicon glyphicon-edit"></span></button></td></tr><tr><td  class="text-center">12</td><td>ACCNTNG</td><td>JOCIELYN RANQUE</td><td>jocielyn</td><td>admin</td><td class="text-center"><button type="button" class="btn btn-default btn-sm" data-toggle="modal" data-target="#changePassword" value="12"><span class="glyphicon glyphicon-edit"></span></button></td></tr><tr><td  class="text-center">13</td><td>CASHIER</td><td>PHILLINE PLARISAN</td><td>philline</td><td>sds staff</td><td class="text-center"><button type="button" class="btn btn-default btn-sm" data-toggle="modal" data-target="#changePassword" value="13"><span class="glyphicon glyphicon-edit"></span></button></td></tr></tbody></table><div id="pageHolder"><ul class="pagination"><li><a class="page" href="#" id="1">1</a></li><li><a class="page" href="#" id="2">2</a></li></ul></div> 
-
+              
                 </div>
                 </div>
             </div>
         </div>
     </div>   
 
-    
 </div>
 
 <!-- Modal For Adding Personnel-->
-<div id="addUser" class="modal fade" role="dialog">
+<div id="addUserMenu" class="modal fade" role="dialog">
   <div class="modal-dialog">
 
     <div class="modal-content">
@@ -119,10 +117,12 @@ if(empty($_SESSION['user_id']))
         <button type="button" class="close" data-dismiss="modal">&times;</button>
         <h4 class="modal-title">Add User</h4>
       </div>
-      <div class="modal-body" id="addDetails">
+      <div class="modal-body" id="addUserDetails">
           <!-- Container for Add Personnel alert-->
 
-          <div class="row"></div>
+          <div id="userAlert" class="row">
+                   
+          </div>
           <div class="row">
               <div class="col-sm-10 col-sm-offset-1">
                 <label for="lastname" class-"control-label">Last Name:</label>
@@ -131,37 +131,32 @@ if(empty($_SESSION['user_id']))
                 <label for="firstname" class-"control-label">First Name:</label>
                 <input type="text" class="form-control" id="firstname">
 
-                 <label for="lastname" class-"control-label">Username:</label>
-                <input type="text" class="form-control" id="lastname" required>
+                 <label for="username" class-"control-label">Username:</label>
+                <input type="text" class="form-control" id="username" required>
                 
-                <label for="firstname" class-"control-label">Password:</label>
-                <input type="password" class="form-control" id="firstname">
+                <label for="password" class-"control-label">Password:</label>
+                <input type="password" class="form-control" id="password">
             
                 <div class="form-group">
                     <label for="dept">Department:</label>
                     <select class="form-control" id="dept">
                         
-                        <option value=""></option><option value="1">ACCOUNTING</option><option value="5">ADMIN</option><option value="13">ASSISTANT SCHOOLS DIVISION SUPERINTENDENT</option><option value="2">BUDGET</option><option value="3">CASHIER</option><option value="4">COA</option><option value="12">CURRICULUM IMPLEMENTATION DIVISION</option><option value="22">FRONT DESK</option><option value="8">HUMAN RESOURCE AND DEVELOPMENT</option><option value="6">HUMAN RESOURCE AND MANAGEMENT</option><option value="18">INFORMATION COMMUNICATIONS AND TECHNOLOGY</option><option value="20">LEARNING RESOURCE</option><option value="19">LEGAL</option><option value="21">LIBRARY HUB</option><option value="16">MEDICAL</option><option value="11">MONITORING AND EVALUATION</option><option value="15">PHYSICAL FACILITIES</option><option value="9">PLANNING AND RESEARCH</option><option value="7">RECORDS</option><option value="14">SCHOOL GOVERNANCE AND OPERATIONS DIVISION</option><option value="10">SOCIAL MOBILIZATION</option><option value="17">SUPPLY</option> 
-                    
                     </select>
                 </div>
 
                 <div class="form-group">
-                    <label for="suffix">User Type:</label>
-                    <select class="form-control" id="suffix">
-                       <option value=""></option><option value="1">Administrator</option><option value="2">Accountant</option><option value="3">Accountant staff</option><option value="4">AOV</option><option value="5">AOV Staff</option><option value="6">ASDS</option><option value="7">ASDS Staff</option><option value="8">Budget office staff</option><option value="9">Budget Officer</option><option value="10">Cashier</option><option value="11">Cashier staff</option><option value="12">CID Chief</option><option value="13">CID chief staff</option><option value="14">CID EPS</option><option value="15">Engineer</option><option value="16">HR office staff</option><option value="17">HR Officer</option><option value="18">IT Officer</option><option value="19">Librarian</option><option value="20">Planning Officer</option><option value="21">Records office staff</option><option value="22">Records Officer</option><option value="23">SDS</option><option value="24">SDS office staff</option><option value="25">SGOD Chief</option><option value="26">SGOD Chief staff</option><option value="27">SREPS-Human Resource</option><option value="28">SREPS-Research</option><option value="29">SREPS-Social Mobilization</option><option value="30">Supply office staff</option><option value="31">Supply Officer</option> 
-
+                    <label for="usertype">User Type:</label>
+                    <select class="form-control" id="usertype">
+           
                     </select>
                 </div>
 
-            
-              
              </div>
           </div>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-default" id="addEmpButton">Add</button>
-        <button type="button" class="btn btn-default" data-dismiss="modal" id="closeEmpButton">Close</button>
+        <button type="button" class="btn btn-default" id="addUser">Add</button>
+        <button type="button" class="btn btn-default" data-dismiss="modal" id="closeUserMenu">Close</button>
       </div>
     </div>
 
@@ -177,7 +172,7 @@ if(empty($_SESSION['user_id']))
         <button type="button" class="close" data-dismiss="modal">&times;</button>
         <h4 class="modal-title">Change Password</h4>
       </div>
-      <div class="modal-body" id="addDetails">
+      <div class="modal-body" id="changePass">
           <!-- Container for Add Personnel alert-->
           <h4> Username: joelkeequi </h4>
           <div class="row"></div>

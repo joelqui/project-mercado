@@ -3,7 +3,6 @@ header("Content-Type: text/javascript; charset=utf-8");
 require_once '../connect.php';
 
 
-
 $page=$_GET['page'];
 $offset=10 *($page-1);
 
@@ -18,9 +17,9 @@ $totalpages=ceil($total/10).' ';
 
 
 $user = $db->query("
-SELECT user_id, CONCAT(first_name,' ',last_name) AS full_name, username, usertype, department.dept_code 
-FROM users
-INNER JOIN department on users.dept_id = department.dept_id 
+SELECT user_id, CONCAT(first_name,' ',last_name) AS full_name, username, usertype.usertype, department.dept_code FROM users 
+LEFT JOIN department on users.dept_id = department.dept_id 
+LEFT JOIN usertype on users.usertype=usertype.usertype_id
 LIMIT 10
 OFFSET $offset");
 

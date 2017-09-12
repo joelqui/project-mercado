@@ -3,12 +3,12 @@ header("Content-Type: text/javascript; charset=utf-8");
 //require_once '../connect.php';
 $db = new PDO('mysql:host=127.0.0.1;dbname=deped_southern_leyte','root','');
 
-$lastname=strtoupper($_GET['lastname']);
-$firstname=strtoupper($_GET['firstname']);
-$username=$_GET['username'];
-$password=$_GET['password'];
-$deptcode=$_GET['deptcode'];
-$usertype=$_GET['usertype']; 
+$lastname=strtoupper($_POST['lastname']);
+$firstname=strtoupper($_POST['firstname']);
+$username=$_POST['username'];
+$password=$_POST['password'];
+$deptcode=$_POST['deptcode'];
+$usertype=$_POST['usertype']; 
 
 $userstatus=1;
 $status=0;
