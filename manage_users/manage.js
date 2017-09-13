@@ -18,6 +18,7 @@ $(document).ready(function(){
                 "text");
             });
  
+        //EventListener when closing the addUser modal
         $('#closeUserMenu').click(function() {
                 $('#lastname').val("");
                 $('#firstname').val("");
@@ -28,6 +29,25 @@ $(document).ready(function(){
                 $('#userAlert').html("");
             });
 
+        //EventListener when changing the userpassword
+        $('#changePasswordButton').click(function() {
+              $.post("changepassword.php",{
+                id: $('#changePass').find('h4').data('value'),
+                p1: $('#password1').val(),
+                p2: $('#password2').val()
+                },
+                changeFn,
+                "text");   
+            });
+        
+        $('#closePassword').click(function() {
+              $('#passwordAlert').html("");
+              $('#password1').val("");
+              $('#password2').val("");
+            });
+
+        
+        
 
         $("#usersContainer").on("click",".page", function(){
                         var p = $( this ).attr('id');
@@ -35,7 +55,12 @@ $(document).ready(function(){
                         });
 
         $("#usersContainer").on("click",".btn", function(){
-                        console.log($(this).val());
+                        $('#changePass h4').remove();
+                        $.get("retrieveUser.php", {id: $(this).val()},
+                            function(data){
+                            $('#changePass').prepend(data);
+                            }
+                         );
                         });
 
 
@@ -110,6 +135,25 @@ function addFn(result){
 
     }
 
+function changeFn(result){
+    var msgleft = '<div class="alert alert-success col-xs-offset-1 col-xs-10">';
+    var msgright = '</div>';
+
+  if (result == 0)
+        msgright = '<strong>Unknown</strong> error occured.</div>';
+    else if (result == 1)
+        msgright = '<strong>Password</strong> successfully changed.</div>';
+    else if (result == 2)
+        msgright = '<strong>Passwords</strong> must match.</div>';
+    else if (result == 3)
+        msgright = '<strong>Passwords</strong> must be more than 6 characters.</div>';
+    
+    $('#password1').val("");
+    $('#password2').val("");    
+    
+    $('#passwordAlert').html(msgleft+msgright);  
+
+    }
 
 
     

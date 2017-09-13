@@ -168,29 +168,29 @@ if(empty($_SESSION['user_id']))
   <div class="modal-dialog modal-sm">
 
     <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal">&times;</button>
-        <h4 class="modal-title">Change Password</h4>
-      </div>
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal">&times;</button>
+            <h4 class="modal-title">Change Password</h4>
+          </div>
       <div class="modal-body" id="changePass">
-          <!-- Container for Add Personnel alert-->
-          <h4> Username: joelkeequi </h4>
-          <div class="row"></div>
+          <!-- Container for Change Password alert-->
+          <div id="passwordAlert" class="row"></div>
           <div class="row">
+          
               <div class="col-sm-12">
-                <label for="lastname" class-"control-label">Enter new password:</label>
-                <input type="password" class="form-control" id="lastname" required>
+                <label for="password1" class-"control-label">Enter new password:</label>
+                <input type="password" class="form-control" id="password1">
                 
-                <label for="firstname" class-"control-label">Confirm new password:</label>
-                <input type="password" class="form-control" id="firstname">
-
-             </div>
+                <label for="password2" class-"control-label">Confirm new password:</label>
+                <input type="password" class="form-control" id="password2">
+              </div>
           </div>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-default" id="addEmpButton">Change Password</button>
-        <button type="button" class="btn btn-default" data-dismiss="modal" id="closeEmpButton">Close</button>
+        <button type="button" class="btn btn-default" id="changePasswordButton">Change Password</button>
+        <button type="button" class="btn btn-default" data-dismiss="modal" id="closePassword">Close</button>
       </div>
+      
     </div>
 
   </div>

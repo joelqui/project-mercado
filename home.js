@@ -17,15 +17,15 @@
         }
               
             
-          $('#states').select2({
-             placeholder: 'Enter name of employee', 
+          $('#search').select2({
+             placeholder: 'Enter name of Personnel', 
               ajax: {
-                     url: "joel.php",
+                    url: "home/searchPersonnel.php",
                     dataType: 'json',
                     delay: 250,
                     data: function (params) {
                     return {
-                        eq: params.term // search term
+                        searchTerm: params.term // search term
                     
                         };
                     },

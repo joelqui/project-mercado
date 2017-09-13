@@ -88,14 +88,14 @@ if(empty($_SESSION['user_id']))
                    data-target="#addModal"><span class="glyphicon glyphicon-plus"></span></button> 
         </div>
         <div class="col-sm-3">
-          <select class="form-control" name="states" id="states"></select>
+          <select class="form-control" name="search" id="search"></select>
         </div>
         <div class="col-sm-8">
             <h1 class="text-center" id="nameContainer">Please enter name of employee.<h1>
         </div>
     </div>
 
-    <div class="row" id="queennie" style="display:none">
+    <div class="row" id="queennie">
         <div class="col-sm-8 ">
             <ul class="nav nav-tabs">
                 <li class="active"><a href="#">Service Record</a></li>
@@ -148,7 +148,7 @@ if(empty($_SESSION['user_id']))
 
         <div class="col-sm-4">
             <div class="panel panel-default">
-                <div class="panel-heading text-center">EMPLOYEE INFORMATION</div>
+                <div class="panel-heading text-center">PERSONNEL INFORMATION</div>
                 <div class="panel-body">
                     <div id="empInfo">
                         <div>EMPLOYEE NUMBER:</div>
