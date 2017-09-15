@@ -22,6 +22,7 @@ if(empty($_SESSION['user_id']))
     <script type="text/javascript" src="js/bootstrap.min.js"></script>
     <script type="text/javascript" src="js/script.js"></script>
     <script type="text/javascript" src="js/select2.min.js"></script>    
+    <script type="text/javascript" src="js/menu-visibility.js"></script>
     <script type="text/javascript" src="home.js"></script>
     <script type="text/javascript" src="js/bootstrap-datepicker.min.js"></script>
   <title>MERCADO-Home</title>
@@ -150,7 +151,7 @@ if(empty($_SESSION['user_id']))
             <div class="panel panel-default">
                 <div class="panel-heading text-center">PERSONNEL INFORMATION</div>
                 <div class="panel-body">
-                    <div id="empInfo">
+                    <div id="personnelInfo">
                         <div>EMPLOYEE NUMBER:</div>
                         <div>LAST NAME:</div>
                         <div>FIRST NAME:</div>
@@ -171,7 +172,7 @@ if(empty($_SESSION['user_id']))
                     <div class="dropup">
                         <button class="btn btn-default dropdown-toggle" data-toggle="dropdown">Select Processing <span class="caret"></span></button>
                         <ul class="dropdown-menu">
-                            <li><a data-toggle="modal" data-target="#addmoreModal" href="#">Add/Edit Details</a></li>
+                            <li><a data-toggle="modal" data-target="#addMoreModal" href="#">Add/Edit Details</a></li>
                             <li><a href="#">Promote</a></li>
                             <li><a href="#">Apply for Step Increment</a></li>
                             <li><a href="#">Apply for Loyalty Pay</a></li>
@@ -186,7 +187,7 @@ if(empty($_SESSION['user_id']))
 </div>
 
 <!-- Modal For Adding Personnel-->
-<div id="adModal" class="modal fade" role="dialog">
+<div id="addModal" class="modal fade" role="dialog">
   <div class="modal-dialog">
 
     <div class="modal-content">
@@ -200,17 +201,17 @@ if(empty($_SESSION['user_id']))
           <div class="row">
               <div class="col-sm-6">
                 <label for="lastname" class-"control-label">Last Name:</label>
-                <input type="text" class="form-control" id="lastname" required>
+                <input type="text" class="form-control input-sm" id="lastname" required>
                 
                 <label for="firstname" class-"control-label">First Name:</label>
-                <input type="text" class="form-control" id="firstname">
+                <input type="text" class="form-control input-sm" id="firstname">
                 
                 <label for="middlename" class-"control-label">Middle Name:</label>
-                <input type="text" class="form-control" id="middlename">
+                <input type="text" class="form-control input-sm" id="middlename">
             
                 <div class="form-group">
                     <label for="suffix">Suffix:</label>
-                    <select class="form-control" id="suffix">
+                    <select class="form-control input-sm" id="suffix">
                         <option value="">NONE</option>
                         <option value="SR">SR</option>
                         <option value="JR">JR</option>
@@ -232,7 +233,7 @@ if(empty($_SESSION['user_id']))
 
                 <div class="form-group">
                     <label for="civilstatus">Civil Status</label>
-                    <select class="form-control" id="civilstatus">
+                    <select class="form-control input-sm" id="civilstatus">
                         <option value="1">SINGLE</option>
                         <option value="2">MARRIED</option>
                         <option value="3">ANNULLED</option>
@@ -243,20 +244,20 @@ if(empty($_SESSION['user_id']))
               </div>
               <div class="col-sm-6">
                 <label for="maidenname" class-"control-label">Maiden Name:</label>
-                <input type="text" class="form-control" id="maidenname" disabled>
+                <input type="text" class="form-control input-sm" id="maidenname" disabled>
 
                 <label for="tin" class-"control-label">TIN:</label>
-                <input type="number" min="111111111" maxlength="999999999" class="form-control" id="tin">
+                <input type="number" min="111111111" maxlength="999999999" class="form-control input-sm" id="tin">
                 
                 <label for="birthdate" class-"control-label">Birth Date:</label>
-                <input type="date" class="form-control" id="birthdate">
+                <input type="date" class="form-control input-sm" id="birthdate">
                 
                 <label for="birthplace" class-"control-label">Birth Place:</label>
-                <input type="text" class="form-control" id="birthplace">
+                <input type="text" class="form-control input-sm" id="birthplace">
 
                 <div class="form-group">
                 <label for="empstatus">Employment Status</label>
-                <select class="form-control" id="empstatus">
+                <select class="form-control input-sm" id="empstatus">
                     <option value="1">REGULAR PERMANENT</option>
                     <option value="2">PERMANENT</option>
                     <option value="3">TEMPORARY</option>
@@ -275,8 +276,8 @@ if(empty($_SESSION['user_id']))
           </div>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-default" id="addEmpButton">Add</button>
-        <button type="button" class="btn btn-default" data-dismiss="modal" id="closeEmpButton">Close</button>
+        <button type="button" class="btn btn-default" id="addPersonnelButton">Add</button>
+        <button type="button" class="btn btn-default" data-dismiss="modal" id="closeAddPersonnel">Close</button>
       </div>
     </div>
 
@@ -284,7 +285,7 @@ if(empty($_SESSION['user_id']))
 </div>
 
 <!-- Modal For Adding/Editing Personnel Details-->
-<div id="addModal" class="modal fade" role="dialog">
+<div id="addMoreModal" class="modal fade" role="dialog">
   <div class="modal-lg modal-dialog">
 
     <div class="modal-content">
@@ -305,23 +306,23 @@ if(empty($_SESSION['user_id']))
         <div class="row" id="pers">   
                 <div class="form-group row col-xs-12">
                     <div class="col-xs-3">
-                        <label for="lastname" class-"control-label">Last Name:</label>
-                        <input type="text" class="form-control input-sm" id="lastname" required>
+                        <label for="addMoreLastName" class-"control-label">Last Name:</label>
+                        <input type="text" class="form-control input-sm" id="addMoreLastName" required>
                     </div>
               
                     <div class="col-xs-3">
-                          <label for="lastname" class-"control-label">First Name:</label>
-                          <input type="text" class="form-control input-sm" id="lastname" required>
+                          <label for="addMoreFirstName" class-"control-label">First Name:</label>
+                          <input type="text" class="form-control input-sm" id="addMoreFirstName" required>
                     </div>
                
                     <div class="col-xs-3">
-                         <label for="lastname" class-"control-label">Middle Name:</label>
-                         <input type="text" class="form-control input-sm" id="lastname" required>
+                         <label for="addMoreMiddleName" class-"control-label">Middle Name:</label>
+                         <input type="text" class="form-control input-sm" id="addMoreMiddleName" required>
                     </div>
 
                      <div class="col-xs-2">
-                        <label for="suffix">Suffix:</label>
-                        <select class="form-control input-sm" id="suffix">
+                        <label for="addMoreSuffix">Suffix:</label>
+                        <select class="form-control input-sm" id="addMoreSuffix">
                             <option value=""></option>
                             <option value="SR">SR</option>
                             <option value="JR">JR</option>

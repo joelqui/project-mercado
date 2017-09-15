@@ -1,5 +1,6 @@
 
 $(document).ready(function(){
+        console.log('Testing');
   
         $("#loginForm").submit(function(event) {
             event.preventDefault();

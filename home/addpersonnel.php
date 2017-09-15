@@ -4,10 +4,6 @@ ini_set('display_errors','On');
 
 $db = new PDO('mysql:host=127.0.0.1;dbname=deped_southernleyte','root','');
 
-//$lastname=$_POST['lastName'];
-//$miname=$_POST['age'];
-//echo $lastname;
-//echo $miname;
 $lastname=strtoupper($_POST['lastName']);
 $firstname=strtoupper($_POST['firstName']);
 $middlename=strtoupper($_POST['middleName']);
