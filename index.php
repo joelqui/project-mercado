@@ -14,17 +14,21 @@ if(empty($_SESSION['user_id']))
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="css/bootstrap.min.css">
+  <link rel="stylesheet" href="css/jquery-ui.css">
+  
   <link rel="stylesheet" href="css/styles.css">
   <link rel="stylesheet" href="css/select2.min.css">
-  <link rel="stylesheet" href="css/bootstrap-datepicker3.css">
+
 
     <script type="text/javascript" src="js/jquery.js"></script>
+    <script type="text/javascript" src="js/jquery-ui.js"></script>
+    <script type="text/javascript" src="js/jquery.number.js"></script>
     <script type="text/javascript" src="js/bootstrap.min.js"></script>
     <script type="text/javascript" src="js/script.js"></script>
     <script type="text/javascript" src="js/select2.min.js"></script>    
     <script type="text/javascript" src="js/menu-visibility.js"></script>
     <script type="text/javascript" src="home.js"></script>
-    <script type="text/javascript" src="js/bootstrap-datepicker.min.js"></script>
+ 
   <title>MERCADO-Home</title>
 </head>
 <body>
@@ -247,13 +251,16 @@ if(empty($_SESSION['user_id']))
                 <input type="text" class="form-control input-sm" id="maidenname" disabled>
 
                 <label for="tin" class-"control-label">TIN:</label>
-                <input type="number" min="111111111" maxlength="999999999" class="form-control input-sm" id="tin">
-                
+                <input type="number" class="form-control input-sm" id="tin">
+              
                 <label for="birthdate" class-"control-label">Birth Date:</label>
-                <input type="date" class="form-control input-sm" id="birthdate">
+                   <input type="text" class="form-control input-sm" readonly="readonly" id="birthdate">    
+               
+               
+
                 
                 <label for="birthplace" class-"control-label">Birth Place:</label>
-                <input type="text" class="form-control input-sm" id="birthplace">
+                <input type="text" class="form-control input-sm" id="birthplace">  
 
                 <div class="form-group">
                 <label for="empstatus">Employment Status</label>

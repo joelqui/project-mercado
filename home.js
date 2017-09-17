@@ -1,5 +1,18 @@
 $(document).ready(function () {
-      
+    
+    $( "#birthdate" ).datepicker({
+      changeMonth: true,
+      changeYear: true
+    });
+
+    $( "#birthdate" ).datepicker({
+      changeMonth: true,
+      changeYear: true
+    });
+
+   $('#tin').number(this, 2,",","," );
+    
+
     $("#fami").hide();
     $("#educ").hide();
     makeTextboxUneditable();
