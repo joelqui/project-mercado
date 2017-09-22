@@ -157,21 +157,18 @@ if(empty($_SESSION['user_id']))
                 <div class="panel-body">
                     <div id="personnelInfo">
                         <div>EMPLOYEE NUMBER:</div>
-                        <div>LAST NAME:</div>
-                        <div>FIRST NAME:</div>
-                        <div>MIDDLE NAME:</div>
+                        <div>DATE OF BIRTH:</div>
                         <div>GENDER:</div>
-                        <div>BIRTHDATE:</div>
-                        <div>BIRTHPLACE:</div>
+                        <div>CIVIL STATUS:</div>
                         <div>TAX IDENTIFICATION NUMBER:</div>
-                        <div>MONTHLY SALARY:</div>
-                        <div>POSITION: </div>
-                        <div>SALARY GRADE: </div>
-                        <div>STEP INCREMENT: </div>
-                        <div>ITEM NUMBER</div>
-                        <div>ELIGIBILITY:</div>
-                        <div>ACTUAL STATION:</div>
-                        <div>RPSU STATION:</div>  
+                        <div>PHILHEALTH NUMBER:</div>
+                        <div>GSIS POLICY NUMBER:</div>
+                        <div>POSITION:</div>
+                        <div>STEP INCREMENT:</div>
+                        <div>ORIGINAL APPOINTMENT:</div>
+                        <div>LAST PROMO DATE: </div>
+                        <div>PLANTILLA STATION: </div>
+                        <div>SCHOOL ID</div>
                     </div> <br>
                     <div class="dropup">
                         <button class="btn btn-default dropdown-toggle" data-toggle="dropdown">Select Processing <span class="caret"></span></button>

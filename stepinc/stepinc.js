@@ -6,7 +6,7 @@
                 changePage(1);
  
 
-                $("#stepContainer").on("click",".page", function(){
+                $("#tableContainer").on("click",".page", function(){
                         var p = $( this ).attr('id');
                         changePage(p);
                         });
@@ -22,7 +22,7 @@ function changePage(page){
 	 $.get("changeContent.php",{page: page}, 
              function(data){
                  console.log("2");
-            $('#stepContainer').html(data);
+            $('#tableContainer').html(data);
             console.log("3");
             }
          );

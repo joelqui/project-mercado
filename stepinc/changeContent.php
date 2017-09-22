@@ -9,23 +9,26 @@ $pagerangeStart = ((floor(($page-1)/5))*5)+1;
 $pageStart=$pagerangeStart;
 $htmlContent = "";
 
-$gettotal = $db->query("SELECT COUNT(*) AS totalfound from personnel WHERE step_inc<8 AND DATE_ADD(lastpromo_date, INTERVAL (step_inc*3) YEAR) < DATE_ADD(CURDATE(), INTERVAL 7 DAY)");
+$gettotal = $db->query("SELECT COUNT(*) AS totalfound from personnel 
+INNER JOIN regular on personnel.personnel_id = regular.personnel_id
+WHERE regular.step_increment<8 AND DATE_ADD(regular.last_promo_date, INTERVAL (regular.step_increment*3) YEAR) < DATE_ADD(CURDATE(), INTERVAL 7 DAY)");
 $total=$gettotal->fetch_assoc()['totalfound'];
 $totalpages=ceil($total/20).' ';
 
 
 
-$personnel = $db->query("SELECT emp_id,CONCAT(last_name,', ',first_name) AS full_name,position.position_shortname,step_inc, DATE_ADD(lastpromo_date, INTERVAL (step_inc*3) YEAR) AS scheduled_step, lastpromo_date
+$personnel = $db->query("SELECT personnel.personnel_id,CONCAT(last_name,', ',first_name) AS full_name,position.position_code,regular.step_increment, DATE_ADD(regular.last_promo_date, INTERVAL (regular.step_increment*3) YEAR) AS scheduled_step, regular.last_promo_date
 from personnel
-INNER JOIN position on personnel.position_id = position.position_id
-WHERE step_inc<8 AND DATE_ADD(lastpromo_date, INTERVAL (step_inc*3) YEAR) < DATE_ADD(CURDATE(), INTERVAL 7 DAY)
+INNER JOIN regular ON personnel.personnel_id = regular.personnel_id
+INNER JOIN position ON regular.position_id = position.position_id
+WHERE regular.step_increment<8 AND DATE_ADD(regular.last_promo_date, INTERVAL (regular.step_increment*3) YEAR) < DATE_ADD(CURDATE(), INTERVAL 7 DAY)
 ORDER BY scheduled_step ASC
 LIMIT 20
 OFFSET $offset");
 
-$htmlContent = '<div id="tableContainer"><table align="center" class="table-condensed table-bordered table-striped text-center "><thead>
-<tr><th>#</th><th>Full Name</th><th>Position</th><th>School</th><th>Current<br>Step</th><th>Schedule<br>of Next Step</th>
-<th>Date of Last<br>Promotion</th></tr></thead><tbody>';
+$htmlContent = '<table width="100%" align="center" class="table-bordered table-striped text-center "><thead>
+<tr><th style="width:5%">#</th><th style="width:30%">Full Name</th><th style="width:10%">Position</th><th style="width:15%">School</th><th style="width:10%">Current<br>Step</th><th style="width:15%">Schedule<br>of Next Step</th>
+<th style="width:15%">Date of Last<br>Promotion</th></tr></thead><tbody>';
 $itemNo=(($page-1)*20)+1;
 
 while ($row = $personnel->fetch_assoc()){
@@ -34,19 +37,19 @@ $htmlContent .= $itemNo.'.';
 $htmlContent .='</td><td>';
 $htmlContent .=$row['full_name'];
 $htmlContent .='</td><td>';
-$htmlContent .=$row['position_shortname'];
+$htmlContent .=$row['position_code'];
 $htmlContent .='</td><td>';
-$htmlContent .='dummy';
+$htmlContent .='- -';
 $htmlContent .='</td><td>';
-$htmlContent .=$row['step_inc'];
+$htmlContent .=$row['step_increment'];
 $htmlContent .='</td><td>';
 $htmlContent .=$row['scheduled_step'];
 $htmlContent .='</td><td>';
-$htmlContent .=$row['lastpromo_date'];
+$htmlContent .=$row['last_promo_date'];
 $htmlContent .='</td></tr>';
 $itemNo++;
 }
-$htmlContent .='</tbody></table> </div>';
+$htmlContent .='</tbody></table> ';
 //echo $htmlContent;
 
 
