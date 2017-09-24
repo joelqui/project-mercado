@@ -11,23 +11,22 @@ $pagerangeStart = ((floor(($page-1)/5))*5)+1;
 $pageStart=$pagerangeStart;
 
 
-$gettotal = $db->query("SELECT COUNT(*) AS totalfound from personnel WHERE (YEAR(CURDATE()) - YEAR(birthdate)) > 59");
+$gettotal = $db->query("SELECT COUNT(*) AS totalfound from personnel WHERE (YEAR(CURDATE()) - YEAR(date_of_birth)) > 59");
 $total=$gettotal->fetch_assoc()['totalfound'];
 $totalpages=ceil($total/20).' ';
 
 
 
 $personnel = $db->query("
-SELECT emp_id,CONCAT(last_name,', ',first_name) AS full_name,position.position_shortname,birthdate,
-FLOOR(DATEDIFF (NOW(), appointment_date)/365) AS years, FLOOR(DATEDIFF (NOW(), birthdate)/365) AS age,   
-    CASE        
-        WHEN (YEAR(CURDATE())-YEAR(birthdate) > 64) THEN 'MANDATORY'
-        ELSE 'OPTIONAL'
-    END AS retirement_type
-FROM personnel
-INNER JOIN position on personnel.position_id = position.position_id
-WHERE (YEAR(CURDATE()) - YEAR(birthdate)) > 59
-ORDER BY retirement_type ASC, MONTH(birthdate),DAY(birthdate) 
+SELECT personnel.personnel_id,CONCAT(last_name,', ',first_name) AS full_name,position.position_code,date_of_birth, 
+FLOOR(DATEDIFF (NOW(), regular.original_appointment)/365) AS years, FLOOR(DATEDIFF (NOW(), date_of_birth)/365) AS age, 
+CASE WHEN (YEAR(CURDATE())-YEAR(date_of_birth) > 64) 
+THEN 'MANDATORY' ELSE 'OPTIONAL' 
+END AS retirement_type FROM personnel 
+INNER JOIN regular ON personnel.personnel_id = regular.personnel_id 
+INNER JOIN position on regular.position_id = position.position_id 
+WHERE (YEAR(CURDATE()) - YEAR(date_of_birth)) > 59 
+ORDER BY retirement_type ASC, MONTH(date_of_birth),DAY(date_of_birth)
 LIMIT 20
 OFFSET $offset");
 
@@ -43,11 +42,11 @@ $htmlContent .= $itemNo;
 $htmlContent .= '</td><td>';
 $htmlContent .= $row['full_name'];
 $htmlContent .= '</td><td>';
-$htmlContent .= $row['position_shortname'];
+$htmlContent .= $row['position_code'];
 $htmlContent .= '</td><td>';
-$htmlContent .= 'schoolname';
+$htmlContent .= ' - -';
 $htmlContent .= '</td><td>';
-$htmlContent .= $row['birthdate'];
+$htmlContent .= $row['date_of_birth'];
 $htmlContent .= '</td><td>';
 $htmlContent .= $row['age'];
 $htmlContent .= '</td><td>';
