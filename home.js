@@ -13,9 +13,7 @@ $(document).ready(function () {
    $('#tin').number(this, 2,",","," );
     
 
-    $("#fami").hide();
-    $("#educ").hide();
-    makeTextboxUneditable();
+   
        
     $('#search').select2({
         placeholder: 'Enter name of Personnel', 
@@ -40,36 +38,12 @@ $(document).ready(function () {
     });
 
 
-    $('#perstab').click(function(){
-        $("#pers").show();
-        $("#fami").hide();
-        $("#educ").hide();
-        $('#perstab').addClass("active");
-        $('#famitab').removeClass("active");
-        $('#eductab').removeClass("active");
-    });
-
-    $('#famitab').click(function(){
-        $("#pers").hide();
-        $("#fami").show();
-        $("#educ").hide();
-        $('#perstab').removeClass("active");
-        $('#famitab').addClass("active");
-        $('#eductab').removeClass("active");
-    });
-
-    $('#eductab').click(function(){
-        $("#pers").hide();
-        $("#fami").hide();
-        $("#educ").show();
-        $('#perstab').removeClass("active");
-        $('#famitab').removeClass("active");
-        $('#eductab').addClass("active");
-    });
+    
 
     //EventListener when a searched personnel is selected
     $('#search').on('select2:select', function (evt) {
         var personnelID = $('#search').val();
+        var newUrl = "edit-personnel/?personnel_id="+$('#search').val();
         $.get( "home/retrievePersonnelName.php", { id: personnelID } )
         .done(function( data ) {
             $("#nameContainer").text(data);
@@ -79,6 +53,7 @@ $(document).ready(function () {
         .done(function( data ) {
             $("#personnelInfo").html(data);
         });
+        $('#editDetails').attr("href",newUrl);
     });
         
     $( "#addEmpButton" ).click(function() {
@@ -136,12 +111,7 @@ function successFn(result){
     $('#mradio').prop('checked',true);
 }
 
-function makeTextboxUneditable(){
-    $('#addMoreLastName').attr('disabled', 'disabled');
-    $('#addMoreFirstName').attr('disabled', 'disabled');
-    $('#addMoreMiddleName').attr('disabled', 'disabled');
-    $('#addMoreSuffix').attr('disabled', 'disabled');
-}
+
        
   
 

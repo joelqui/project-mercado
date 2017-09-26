@@ -173,7 +173,7 @@ if(empty($_SESSION['user_id']))
                     <div class="dropup">
                         <button class="btn btn-default dropdown-toggle" data-toggle="dropdown">Select Processing <span class="caret"></span></button>
                         <ul class="dropdown-menu">
-                            <li><a data-toggle="modal" data-target="#addMoreModal" href="#">Add/Edit Details</a></li>
+                            <li><a id="editDetails" href="#">Add/Edit Details</a></li>
                             <li><a href="#">Promote</a></li>
                             <li><a href="#">Apply for Step Increment</a></li>
                             <li><a href="#">Apply for Loyalty Pay</a></li>
