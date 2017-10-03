@@ -20,8 +20,6 @@ while ($row = $school->fetch_assoc()){
     }
 }
 
-
-
 ?>
 
 <!DOCTYPE html>
@@ -151,72 +149,95 @@ while ($row = $school->fetch_assoc()){
 
             <div class="form-group row col-xs-12">
                 <div class="col-xs-3">
-                    <label for="lastname" class-"control-label">Date of Birth</label>
-                    <input type="date" class="form-control input-sm" id="lastname" required>
+                    <label for="birthdate" class-"control-label">Date of Birth</label>
+                    <input type="date" class="form-control input-sm" id="birthdate" required>
                 </div>
                 <div class="col-xs-4">
-                    <label for="lastname" class-"control-label">Place of Birth</label>
-                    <input type="text" class="form-control input-sm" id="lastname" required>
+                    <label for="birthplace" class-"control-label">Place of Birth</label>
+                    <input type="text" class="form-control input-sm" id="birthplace" required>
                 </div>
+                 <div class="col-xs-2">
+                    <label for="sex">Sex</label>
+                    <select class="form-control input-sm" id="sex">
+                        <option value=""></option>
+                        <option value="1">MALE</option>
+                        <option value="2">FEMALE</option>
+                    </select>  
+                </div> 
                 <div class="col-xs-2">
                     <label for="civilstatus">Civil Status</label>
                     <select class="form-control input-sm" id="civilstatus">
+                        <option value=""></option>
                         <option value="1">SINGLE</option>
                         <option value="2">MARRIED</option>
                         <option value="3">ANNULLED</option>
                         <option value="4">WIDOWED</option>
                         <option value="5">SEPARATED</option>
                     </select>  
-                </div> 
+                </div>   
             </div>
 
             <div class="form-group row col-xs-12">
                 <div class="col-xs-4">
-                    <label for="ex1">Email Address</label>
-                    <input class="form-control input-sm" id="ex1" type="text">
+                    <label for="email">Email Address</label>
+                    <input class="form-control input-sm" id="email" type="text">
                 </div>
                 <div class="col-xs-2">
-                    <label for="ex2">Cellphone No.</label>
-                    <input class="form-control input-sm" id="ex2" type="text">
-                </div>
-                <div class="col-xs-2">
-                    <label for="ex2">Citizenship</label>
-                    <input class="form-control input-sm" id="ex2" type="text">
+                    <label for="celno">Cellphone No.</label>
+                    <input class="form-control input-sm" id="celno" type="text">
                 </div>
                 <div class="col-xs-1">
-                    <label for="ex2">Height</label>
-                    <input class="form-control input-sm" id="ex2" placeholder="mtrs" type="text">
+                    <label for="height">Height</label>
+                    <input class="form-control input-sm" id="height" placeholder="mtrs" type="text">
                 </div>
                     <div class="col-xs-1">
-                    <label for="ex2">Weight</label>
-                    <input class="form-control input-sm" id="ex2" placeholder="kgs" type="text">
+                    <label for="weight">Weight</label>
+                    <input class="form-control input-sm" id="weight" placeholder="kgs" type="text">
                 </div>
-                    <div class="col-xs-2">
-                    <label for="ex2">Blood Type</label>
-                    <input class="form-control input-sm" id="ex2" type="text">
+                <div class="col-xs-2">
+                    <label for="bloodtype">Blood Type</label>
+                    <select class="form-control input-sm" id="bloodtype">
+                        <option value=""></option>
+                        <option value="1">O+</option>
+                        <option value="2">O-</option>
+                        <option value="3">A+</option>
+                        <option value="4">A-</option>
+                        <option value="5">B+</option>
+                        <option value="6">B-</option>
+                        <option value="7">AB+</option>
+                        <option value="8">AB-</option>
+                    </select>
                 </div>
             </div>     
 
             <div class="form-group row col-xs-12">
                 <div class="col-xs-2">
-                    <label for="ex1">Address</label>
-                    <input class="form-control input-sm" id="ex1" placeholder="Select Region" type="text">
+                    <label for="region">Address</label>
+                    <select class="form-control input-sm" id="region">
+                        <option value="">Select Region</option>
+                    </select>  
                 </div>
                 <div class="col-xs-2">
-                        <label for="ex2"></label>
-                    <input class="form-control input-sm" id="ex2" placeholder="Province" type="text">
+                    <label for="province"></label>
+                    <select class="form-control input-sm" id="province">
+                        <option value="">Province</option>
+                    </select>  
                 </div>
                 <div class="col-xs-2">
-                        <label for="ex2"></label>
-                    <input class="form-control input-sm" id="ex2" placeholder="Municipality/City" type="text">
+                    <label for="municipality"></label>
+                    <select class="form-control input-sm" id="municipality">
+                        <option value="">Municipality/City</option>
+                    </select>  
                 </div>
                 <div class="col-xs-2">
-                    <label for="ex2"></label>
-                    <input class="form-control input-sm" id="ex2" placeholder="Barangay" type="text">
+                    <label for="barangay"></label>
+                    <select class="form-control input-sm" id="barangay">
+                        <option value="">Barangay</option>
+                    </select>
                 </div>
                 <div class="col-xs-2">
-                    <label for="ex2">Zip Code</label>
-                    <input class="form-control input-sm" id="ex2" type="text">
+                    <label for="zipcode">Zip Code</label>
+                    <input class="form-control input-sm" id="zipcode" type="text">
                 </div>
                 <div class="col-xs-2">
                     <label for="ex2">Tel. No.</label>
@@ -226,28 +247,28 @@ while ($row = $school->fetch_assoc()){
 
             <div class="form-group row col-xs-12">
                 <div class="col-xs-2">
-                    <label for="ex1">Employee No.</label>
-                    <input class="form-control input-sm" id="ex1" type="text">
+                    <label for="empnum">Employee No.</label>
+                    <input class="form-control input-sm" id="empnum" type="text">
                 </div>
                 <div class="col-xs-2">
-                    <label for="ex2">TIN</label>
-                    <input class="form-control input-sm" id="ex2" type="text">
+                    <label for="tin">TIN</label>
+                    <input class="form-control input-sm" id="tin" type="text">
                 </div>
                 <div class="col-xs-2">
-                    <label for="ex2">SSS No.</label>
-                    <input class="form-control input-sm" id="ex2" type="text">
+                    <label for="sssnum">SSS No.</label>
+                    <input class="form-control input-sm" id="sssnum" type="text">
                 </div>
                 <div class="col-xs-2">
-                    <label for="ex2">GSIS No.</label>
-                    <input class="form-control input-sm" id="ex2" type="text">
+                    <label for="gsisnum">GSIS No.</label>
+                    <input class="form-control input-sm" id="gsisnum" type="text">
                 </div>
                     <div class="col-xs-2">
-                    <label for="ex2">Pagibig ID No.</label>
-                    <input class="form-control input-sm" id="ex2" type="text">
+                    <label for="pagibignum">Pagibig ID No.</label>
+                    <input class="form-control input-sm" id="pagibignum" type="text">
                 </div>
                     <div class="col-xs-2">
-                    <label for="ex2">Philhealth No.</label>
-                    <input class="form-control input-sm" id="ex2" type="text">
+                    <label for="philhealthnum">Philhealth No.</label>
+                    <input class="form-control input-sm" id="philhealthnum" type="text">
                 </div>
             </div> 
         </div>  
@@ -311,31 +332,17 @@ while ($row = $school->fetch_assoc()){
         </div> 
 
         <div class="row" id="educ">
-            <h4>&nbsp&nbspCivil Service Eligibility</h4>
+            <h4>&nbsp&nbspEligibility</h4>
             <div class="form-group col-xs-12">
                 <div class="col-xs-3">
-                    <label for="lastname" class-"control-label">Eligibility</label>
-                    <input type="text" class="form-control input-sm" id="lastname" required>
-                </div> 
-                <div class="col-xs-2">
-                    <label for="lastname" class-"control-label">Rating</label>
-                    <input type="text" class="form-control input-sm" id="lastname" required>
-                </div>  
-                <div class="col-xs-3">
-                    <label for="lastname" class-"control-label">Date of Examination</label>
-                    <input type="date" class="form-control input-sm" id="lastname" required>
-                </div>  
-                <div class="col-xs-4">
-                    <label for="lastname" class-"control-label">Date of Examination</label>
-                    <input type="text" class="form-control input-sm" id="lastname" required>
+                    <label for="eligibility" class-"control-label">Eligibility</label>
+                    <select class="form-control input-sm" id="eligibility">
+                        <option value=""></option>
+                    </select>  
                 </div>  
             </div>
-            <h4>&nbsp&nbspEducational Background</h4>
+            <h4>&nbsp&nbspEducational Background-Undergraduate</h4>
             <div class="form-group col-xs-12">
-                <div class="col-xs-2">
-                    <label for="lastname" class-"control-label">Level</label>
-                    <input type="text" class="form-control input-sm" id="lastname" required>
-                </div> 
                 <div class="col-xs-4">
                     <label for="lastname" class-"control-label">Name of school</label>
                     <input type="text" class="form-control input-sm" id="lastname" required>
@@ -343,6 +350,12 @@ while ($row = $school->fetch_assoc()){
                 <div class="col-xs-3">
                     <label for="lastname" class-"control-label">Degree Course</label>
                     <input type="text" class="form-control input-sm" id="lastname" required>
+                </div>  
+                 <div class="col-xs-2">
+                    <label for="eligibility" class-"control-label">Graduated?</label>
+                    <select class="form-control input-sm" id="eligibility">
+                        <option value="">Yes</option>
+                    </select>  
                 </div>  
                 <div class="col-xs-2">
                     <label for="lastname" class-"control-label">Year Grad.</label>
@@ -353,6 +366,57 @@ while ($row = $school->fetch_assoc()){
                     <input type="text" class="form-control input-sm" id="lastname" required>
                 </div>  
             </div>
+            <h4>&nbsp&nbspEducational Background-Masteral</h4>
+            <div class="form-group col-xs-12">
+                <div class="col-xs-4">
+                    <label for="lastname" class-"control-label">Name of school</label>
+                    <input type="text" class="form-control input-sm" id="lastname" required>
+                </div>  
+                <div class="col-xs-3">
+                    <label for="lastname" class-"control-label">Degree Course</label>
+                    <input type="text" class="form-control input-sm" id="lastname" required>
+                </div>  
+                 <div class="col-xs-2">
+                    <label for="eligibility" class-"control-label">Graduated?</label>
+                    <select class="form-control input-sm" id="eligibility">
+                        <option value="">Yes</option>
+                    </select>  
+                </div>  
+                <div class="col-xs-2">
+                    <label for="lastname" class-"control-label">Year Grad.</label>
+                    <input type="date" class="form-control input-sm" id="lastname" required>
+                </div>  
+                <div class="col-xs-1">
+                    <label for="lastname" class-"control-label">Units</label>
+                    <input type="text" class="form-control input-sm" id="lastname" required>
+                </div>  
+            </div>
+             <h4>&nbsp&nbspEducational Background-Doctoral</h4>
+            <div class="form-group col-xs-12">
+                <div class="col-xs-4">
+                    <label for="lastname" class-"control-label">Name of school</label>
+                    <input type="text" class="form-control input-sm" id="lastname" required>
+                </div>  
+                <div class="col-xs-3">
+                    <label for="lastname" class-"control-label">Degree Course</label>
+                    <input type="text" class="form-control input-sm" id="lastname" required>
+                </div>  
+                <div class="col-xs-2">
+                    <label for="eligibility" class-"control-label">Graduated?</label>
+                    <select class="form-control input-sm" id="eligibility">
+                        <option value="">Yes</option>
+                    </select>  
+                </div>  
+                <div class="col-xs-2">
+                    <label for="lastname" class-"control-label">Year Grad.</label>
+                    <input type="date" class="form-control input-sm" id="lastname" required>
+                </div>  
+                <div class="col-xs-1">
+                    <label for="lastname" class-"control-label">Units</label>
+                    <input type="text" class="form-control input-sm" id="lastname" required>
+                </div>  
+            </div>
+
         </div>
         <button type="button" class="btn btn-default" id="save">Save Changes</button>
     </div>
