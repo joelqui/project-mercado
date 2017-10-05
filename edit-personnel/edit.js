@@ -1,12 +1,14 @@
- $(document).ready(function () {
+$(document).ready(function () {
        
+    //Add JQuery UI to date collectors
+    
+        addDatePackage();
 
-        
         isSelected();
 
         $("#fami").hide();
         $("#educ").hide();
-        makeTextboxUneditable();
+       // makeTextboxUneditable();
 
     $('#perstab').click(function(){
         $("#pers").show();
@@ -37,16 +39,17 @@
 
 
     $('#region').click(function() {
-        retrieveProvince($('#region').val());
+        console.log($('#region').val());
+        retrieveProvince($('#region').val(),'');
     });
 
      $('#province').click(function() {
-        retrieveMunicipality($('#province').val());
+        retrieveMunicipality($('#province').val(),'');
     });
 
 
     $('#municipality').click(function() {
-        retrieveBarangay($('#municipality').val());
+        retrieveBarangay($('#municipality').val(),0);
     });
 
 
@@ -54,24 +57,87 @@
 
          $.get( "update-personnel.php", { 
                  id: $("#holder").find('h2').attr('id') ,
-                 lname: $('#addMoreLastName').val() ,
-                 fname: $('#addMoreFirstName').val() ,
-                 mname: $('#addMoreMiddleName').val() ,
+                 lname: $('#addMoreLastName').val(),
+                 fname: $('#addMoreFirstName').val(),
+                 mname: $('#addMoreMiddleName').val(),
                  suffix: $('#addMoreSuffix').val(),
+                 birthdate: $('#birthdate').val(),
+                 birthplace: $('#birthplace').val(),
+                 sex: $('#sex').val(),
+                 civilstatus: $('#civilstatus').val(),
+                 email: $('#email').val(),
+                 celno: $('#celno').val(),
+                 telno: $('#telno').val(),
+                 height: $('#height').val(),
+                 weight: $('#weight').val(),
+                 bloodtype: $('#bloodtype').val(),
                  region: $('#region').val(),
                  province: $('#province').val(),
                  municipality: $('#municipality').val(),
-                 barangay: $('#barangay').val()
+                 barangay: $('#barangay').val(),
+                 zipcode: $('#zipcode').val(),
+
+                 empnum: $('#empnum').val(),
+                 tin: $('#tin').val(),
+                 sssnum: $('#sssnum').val(),
+                 gsisnum: $('#gsisnum').val(),
+                 philhealthnum: $('#philhealthnum').val(),
+                 pagibignum: $('#pagibignum').val(),
+
+                 slastname: $('#slastname').val(),
+                 sfirstname: $('#sfirstname').val(),
+                 smiddlename: $('#smiddlename').val(),
+
+                 flastname: $('#flastname').val(),
+                 ffirstname: $('#ffirstname').val(),
+                 fmiddlename: $('#fmiddlename').val(),
+
+                 mlastname: $('#mlastname').val(),
+                 mfirstname: $('#mfirstname').val(),
+                 mmiddlename: $('#mmiddlename').val()
                 })
         .done(function( data ) {
-            alert('EDIT SUCCESS!!!!');
+           alert(data);
         });
     });
 
+    //Listener for adding children
+    $('#addChild').click(function() {
+        $('#addTextBoxArea').show();
+        $(this).parent().next().append('<div class="form-group"><div class="col-xs-6"><input type="text" class="form-control input-sm" id="childname" required></div><div class="col-xs-4"><input type="text" class="form-control input-sm child-date" id="childbdate" required></div><div class="col-xs-2"><button type="button" class="btn btn-block btn-primary btn-sm">Add</button></div></div>');
+        tryThis($(this).parent().next().children().children().next());
+     //   $(this).parent().last().hide();
+    });
 
+    $('#addTextBoxArea').on('click','.btn' ,function(){
+        //add datepicker ui
+
+
+
+        //name
+        console.log($(this).parent().prev().prev().children().val());
+        //birthdate
+        //$(this).parent().prev().prev().children().val();
+    });
 
 });
 
+
+function addDatePackage(){
+    $( "#birthdate" ).datepicker({
+      dateFormat: 'yy-mm-dd',
+      changeMonth: true,
+      changeYear: true
+    });
+}
+
+function tryThis(elem){
+    elem.datepicker({
+      dateFormat: 'yy-mm-dd',
+      changeMonth: true,
+      changeYear: true
+    });
+}
 
 
 function getPersonnelDetails(){
@@ -82,12 +148,36 @@ function getPersonnelDetails(){
                 $('#addMoreFirstName').val(json[0].fname);
                 $('#addMoreMiddleName').val(json[0].mname);
                 $('#addMoreSuffix').val(json[0].suffix);
-                $('#birthdate').val(json[0].birthdate)
+                $('#birthdate').val(json[0].birthdate);
+                $('#birthplace').val(json[0].birthplace);
+                $('#sex').val(json[0].sex);
                 $('#civilstatus').val(json[0].civilstatus);
+
+                $('#email').val(json[0].email);
+                $('#celno').val(json[0].celno);
+                $('#height').val(json[0].height);
+                $('#weight').val(json[0].weight);
+                $('#bloodtype').val(json[0].bloodtype);
+                $('#telno').val(json[0].telno);
+
                 $('#empnum').val(json[0].empnum);
                 $('#tin').val(json[0].tin);
+                $('#sssnum').val(json[0].sssnum);
                 $('#gsisnum').val(json[0].gsisnum);
                 $('#philhealthnum').val(json[0].philhealthnum);
+                $('#pagibignum').val(json[0].pagibignum);
+
+                $('#slastname').val(json[0].slastname);
+                $('#sfirstname').val(json[0].sfirstname);
+                $('#smiddlename').val(json[0].smiddlename);
+
+                $('#flastname').val(json[0].flastname);
+                $('#ffirstname').val(json[0].ffirstname);
+                $('#fmiddlename').val(json[0].fmiddlename);
+
+                $('#mlastname').val(json[0].mlastname);
+                $('#mfirstname').val(json[0].mfirstname);
+                $('#mmiddlename').val(json[0].mmiddlename);
                 console.log( "JSON Data: " + json[0].lname );
                 })
                 .fail(function( jqxhr, textStatus, error ) {
@@ -100,10 +190,10 @@ function getPersonnelAddress(){
 
         $.getJSON( "retrievePersonnelAddress.php", { id: $("#holder").find('h2').attr('id')} )
                 .done(function( json ) {
-                    retrieveRegion();
-                    retrieveProvince(json[0].region);
-                    retrieveMunicipality(json[0].province);
-                    retrieveBarangay(json[0].municipality);              
+                    retrieveRegion(json[0].region);
+                    retrieveProvince(json[0].region,json[0].province);
+                    retrieveMunicipality(json[0].province,json[0].municipality);
+                    retrieveBarangay(json[0].municipality,json[0].barangay);              
                 })
                 .fail(function( jqxhr, textStatus, error ) {
                 var err = textStatus + ", " + error;
@@ -138,26 +228,29 @@ function makeTextboxUneditable(){
 function isSelected(){
     var school = $("#holder").find('h2').attr('id');
     if (school != 1){
-        getPersonnelAddress();
-        getPersonnelDetails();
-        putPersonnelAddress();
 
+    getPersonnelAddress();
         
+        getPersonnelDetails();
+
+        //putPersonnelAddress();
     }
 }
 
-function retrieveRegion(){
-    
-    $.get( "retrieveRegion.php")
+function retrieveRegion(s){
+    $.get( "retrieveRegion.php",{
+                slctd: s
+                })
         .done(function( data ) {
             $('#region').html(data);
         });
 }
 
-function retrieveBarangay(municipality){
+function retrieveBarangay(municipality,s){
 
       $.get( "retrieveBarangay.php", { 
-                    select: municipality
+                    select: municipality,
+                    slctd: s
                     })
             .done(function( data ) {
                 $('#barangay').html(data);
@@ -166,25 +259,26 @@ function retrieveBarangay(municipality){
       $.getJSON( "retrieveZipcode.php", {select: municipality} )
                 .done(function( json ) {
                 $('#zipcode').val(json[0].zipcode);
-            });   
-        
-        
+            });     
 }
 
-function retrieveMunicipality(province){
+function retrieveMunicipality(province,s){
        $.get( "retrieveMunicipality.php", { 
-                    select: province
+                    select: province,
+                    slctd: s
                     })
             .done(function( data ) {
                 $('#municipality').html(data);
             });
 }
 
-function retrieveProvince(region){
+function retrieveProvince(region,s){
         $.get( "retrieveProvince.php", { 
-                    select: region
+                    select: region,
+                    slctd: s
                     })
             .done(function( data ) {
+                console.log('yes');
                 $('#province').html(data);
             });
 }

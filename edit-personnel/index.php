@@ -150,7 +150,7 @@ while ($row = $school->fetch_assoc()){
             <div class="form-group row col-xs-12">
                 <div class="col-xs-3">
                     <label for="birthdate" class-"control-label">Date of Birth</label>
-                    <input type="date" class="form-control input-sm" id="birthdate" required>
+                    <input type="text" class="form-control input-sm" id="birthdate" required>
                 </div>
                 <div class="col-xs-4">
                     <label for="birthplace" class-"control-label">Place of Birth</label>
@@ -240,8 +240,8 @@ while ($row = $school->fetch_assoc()){
                     <input class="form-control input-sm" id="zipcode" type="text">
                 </div>
                 <div class="col-xs-2">
-                    <label for="ex2">Tel. No.</label>
-                    <input class="form-control input-sm" id="ex2" type="text">
+                    <label for="telno">Tel. No.</label>
+                    <input class="form-control input-sm" id="telno" type="text">
                 </div>
             </div>     
 
@@ -276,50 +276,50 @@ while ($row = $school->fetch_assoc()){
         <div class="row" id="fami">   
                 <div class="form-group row  col-xs-12">
                     <div class=" col-xs-4">
-                        <label for="lastname" class-"control-label">Spouse's Last Name:</label>
-                        <input type="text" class="form-control input-sm" id="lastname" required>
+                        <label for="slastname" class-"control-label">Spouse's Last Name:</label>
+                        <input type="text" class="form-control input-sm" id="slastname" required>
                     </div>
               
                     <div class="col-xs-4">
-                          <label for="lastname" class-"control-label">Spouse's First Name:</label>
-                          <input type="text" class="form-control input-sm" id="lastname" required>
+                          <label for="sfirstname" class-"control-label">Spouse's First Name:</label>
+                          <input type="text" class="form-control input-sm" id="sfirstname" required>
                     </div>
                
                     <div class="col-xs-4">
-                         <label for="lastname" class-"control-label">Spouse's Middle Name:</label>
-                         <input type="text" class="form-control input-sm" id="lastname" required>
+                         <label for="smiddlename" class-"control-label">Spouse's Middle Name:</label>
+                         <input type="text" class="form-control input-sm" id="smiddlename" required>
                     </div>
                 </div>
 
                 <div class="form-group row col-xs-12">
                     <div class="col-xs-4">
-                        <label for="lastname" class-"control-label">Father's Last Name:</label>
-                        <input type="text" class="form-control input-sm" id="lastname" required>
+                        <label for="flastname" class-"control-label">Father's Last Name:</label>
+                        <input type="text" class="form-control input-sm" id="flastname" required>
                     </div>
               
                     <div class="col-xs-4">
-                          <label for="lastname" class-"control-label">Father's First Name:</label>
-                          <input type="text" class="form-control input-sm" id="lastname" required>
+                          <label for="ffirstname" class-"control-label">Father's First Name:</label>
+                          <input type="text" class="form-control input-sm" id="ffirstname" required>
                     </div>
                
                     <div class="col-xs-4">
-                         <label for="lastname" class-"control-label">Father's Middle Name:</label>
-                         <input type="text" class="form-control input-sm" id="lastname" required>
+                         <label for="fmiddlename" class-"control-label">Father's Middle Name:</label>
+                         <input type="text" class="form-control input-sm" id="fmiddlename" required>
                     </div>
                 </div>
 
                 <div class="form-group row col-xs-12">
                     <div class="col-xs-4">
-                        <label for="lastname" class-"control-label">Mothers's Maiden Last Name:</label>
-                        <input type="text" class="form-control input-sm" id="lastname" required>
+                        <label for="mlastname" class-"control-label">Mothers's Maiden Last Name:</label>
+                        <input type="text" class="form-control input-sm" id="mlastname" required>
                     </div>
                     <div class="col-xs-4">
-                          <label for="lastname" class-"control-label">Mothers's First Name:</label>
-                          <input type="text" class="form-control input-sm" id="lastname" required>
+                          <label for="mfirstname" class-"control-label">Mothers's First Name:</label>
+                          <input type="text" class="form-control input-sm" id="mfirstname" required>
                     </div>
                     <div class="col-xs-4">
-                         <label for="lastname" class-"control-label">Mothers's Maiden Middle Name:</label>
-                         <input type="text" class="form-control input-sm" id="lastname" required>
+                         <label for="mmiddlename" class-"control-label">Mothers's Maiden Middle Name:</label>
+                         <input type="text" class="form-control input-sm" id="mmiddlename" required>
                     </div>
                 </div>
 
@@ -421,6 +421,94 @@ while ($row = $school->fetch_assoc()){
         <button type="button" class="btn btn-default" id="save">Save Changes</button>
     </div>
 
+<!-- Modal -->
+<div id="childrenModal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+
+    <!-- Modal content for adding children-->
+    <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">List of Children</h4>
+            </div>
+            <div class="modal-body">
+                    <div class="row"> 
+                        <div class="col-xs-12 form-group">
+                            <table align="center" class="table-condensed table-bordered table-striped text-center ">
+                                <thead>
+                                    <tr>
+                                        <th style="width:60%">Full Name</th>
+                                        <th style="width:30%">Date of Birth</th>
+                                        <th style="width:10%">Delete</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>LIEZEL L. ACIBES</td>
+                                        <td>October 5, 2017</td>
+                                        <td>
+                                            <button type="button" class="btn btn-primary btn-sm">Remove</button>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                       
+                        <div id="addTextBoxArea" class="form-group">
+                            <div class="col-xs-6">
+                                <label for="childname" class-"control-label">Name of Child (Full name)</label>
+                            </div> 
+                            <div class="col-xs-4">
+                                <label for="childbdate" class-"control-label">Date of Birth</label>
+                            </div>  
+                        </div>
+
+                    </div>       
+
+                    <div class="row">
+
+                    <div class="col-xs-12 form-group">
+                        <div class="col-xs-6">
+                            <input type="text" class="form-control input-sm" id="childname" required>
+                        </div>
+                        <div class="col-xs-4">
+                            <input type="text" class="form-control input-sm" id="childbdate" required>
+                        </div>
+                        <div class="col-xs-2">
+                            <button type="button" class="btn btn-block btn-primary btn-sm">Add</button>
+                        </div>
+                    </div>       
+                    </div>       
+                                        
+                     <!--<div class="form-group col-xs-12">
+                                <div class="col-xs-6">
+                                    <label for="childname1" class-"control-label">Name of Child (Full name)</label>
+                                    <input type="text" class="form-control input-sm" id="childname1" required>
+                                </div> 
+                                <div class="col-xs-4">
+                                    <label for="childbdate1" class-"control-label">Date of Birth</label>
+                                    <input type="text" class="form-control input-sm" id="childbdate1" required>
+                                </div>  
+                            </div> 
+
+                            <div class="form-group col-xs-offset-1 col-xs-11">
+                                <button type="button" id="addChild" class="btn btn-default">Add</button>
+                                <button type="button" id="removeChild" class="btn btn-default">Remove</button>
+                            </div>    -->
+
+
+
+                    
+            </div>
+      
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default">Save</button>
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
+    </div>
+
+  </div>
+</div>
 
 </body>
 </html>  
