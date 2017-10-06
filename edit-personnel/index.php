@@ -325,7 +325,7 @@ while ($row = $school->fetch_assoc()){
 
                 <div class="form-group row col-xs-12">
                     <div class="col-xs-3">
-                          <button type="button" class="btn btn-info btn-default" data-toggle="modal" data-target="#childrenModal">Add Children</button>
+                          <button type="button" id="addChildButton" class="btn btn-info btn-default" data-toggle="modal" data-target="#childrenModal">Add Children</button>
                     </div>
                 </div>
 
@@ -433,25 +433,10 @@ while ($row = $school->fetch_assoc()){
             </div>
             <div class="modal-body">
                     <div class="row"> 
-                        <div class="col-xs-12 form-group">
-                            <table align="center" class="table-condensed table-bordered table-striped text-center ">
-                                <thead>
-                                    <tr>
-                                        <th style="width:60%">Full Name</th>
-                                        <th style="width:30%">Date of Birth</th>
-                                        <th style="width:10%">Delete</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr>
-                                        <td>LIEZEL L. ACIBES</td>
-                                        <td>October 5, 2017</td>
-                                        <td>
-                                            <button type="button" class="btn btn-primary btn-sm">Remove</button>
-                                        </td>
-                                    </tr>
-                                </tbody>
-                            </table>
+                        <div class="col-xs-12 form-group" id="childrenContainer">
+                            
+
+
                         </div>
                        
                         <div id="addTextBoxArea" class="form-group">
@@ -475,7 +460,7 @@ while ($row = $school->fetch_assoc()){
                             <input type="text" class="form-control input-sm" id="childbdate" required>
                         </div>
                         <div class="col-xs-2">
-                            <button type="button" class="btn btn-block btn-primary btn-sm">Add</button>
+                            <button type="button" id="addChild" class="btn btn-block btn-primary btn-sm">Add</button>
                         </div>
                     </div>       
                     </div>       
@@ -502,7 +487,6 @@ while ($row = $school->fetch_assoc()){
             </div>
       
             <div class="modal-footer">
-                <button type="button" class="btn btn-default">Save</button>
                 <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
             </div>
     </div>

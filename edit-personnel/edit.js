@@ -101,43 +101,55 @@ $(document).ready(function () {
         });
     });
 
-    //Listener for adding children
-    $('#addChild').click(function() {
-        $('#addTextBoxArea').show();
-        $(this).parent().next().append('<div class="form-group"><div class="col-xs-6"><input type="text" class="form-control input-sm" id="childname" required></div><div class="col-xs-4"><input type="text" class="form-control input-sm child-date" id="childbdate" required></div><div class="col-xs-2"><button type="button" class="btn btn-block btn-primary btn-sm">Add</button></div></div>');
-        tryThis($(this).parent().next().children().children().next());
-     //   $(this).parent().last().hide();
+    $('#addChild').click(function(){
+         $.get( "addChild.php", { 
+                    id: $("#holder").find('h2').attr('id'),
+                    cname: $('#childname').val(),
+                    bdate: $('#childbdate').val()
+                    })
+            .done(function( data ) {
+                if (data==1){
+                    retrieveChildren();
+                    $('#childname').val('');
+                    $('#childbdate').val('');
+                    }
+                else
+                    alert('Something went wrong!!');
+            });
     });
 
-    $('#addTextBoxArea').on('click','.btn' ,function(){
-        //add datepicker ui
-
-
-
-        //name
-        console.log($(this).parent().prev().prev().children().val());
-        //birthdate
-        //$(this).parent().prev().prev().children().val();
+    //Listener when deleting a child
+    $('#childrenContainer').on('click','button',function(){
+        $.get( "deleteChild.php", { 
+                    dependent_id: $(this).parent().parent().data('id')
+                    })
+            .done(function( data ) {
+                if (data==1){
+                    retrieveChildren();
+                    }
+                else
+                    alert('Something went wrong!!');
+            });
     });
+
+    $('#addChildButton').click(function(){
+        console.log('shit');
+         retrieveChildren();
+    });
+    
+  
 
 });
 
 
 function addDatePackage(){
-    $( "#birthdate" ).datepicker({
+    $( '#birthdate, #childbdate').datepicker({
       dateFormat: 'yy-mm-dd',
       changeMonth: true,
       changeYear: true
     });
 }
 
-function tryThis(elem){
-    elem.datepicker({
-      dateFormat: 'yy-mm-dd',
-      changeMonth: true,
-      changeYear: true
-    });
-}
 
 
 function getPersonnelDetails(){
@@ -201,21 +213,14 @@ function getPersonnelAddress(){
                 });
 }
 
-function putPersonnelAddress(){
-
-        $.getJSON( "retrievePersonnelAddress.php", { id: $("#holder").find('h2').attr('id')} )
-                .done(function( json ) {
-                    
-                    $('#region').val(8);
-                   // retrieveMunicipality(json[0].province);
-                  //  retrieveBarangay(json[0].municipality);              
-                })
-                .fail(function( jqxhr, textStatus, error ) {
-                var err = textStatus + ", " + error;
-                console.log( "Request Failed: " + err );
-                });
+function retrieveChildren(){
+        $.get( "retrieveChildren.php", { 
+                    id: $("#holder").find('h2').attr('id')
+                    })
+            .done(function( data ) {
+                $('#childrenContainer').html(data);
+            });
 }
-
 
 function makeTextboxUneditable(){
     $('#addMoreLastName').attr('disabled', 'disabled');
@@ -230,9 +235,8 @@ function isSelected(){
     if (school != 1){
 
     getPersonnelAddress();
-        
-        getPersonnelDetails();
-
+    getPersonnelDetails();
+   
         //putPersonnelAddress();
     }
 }
